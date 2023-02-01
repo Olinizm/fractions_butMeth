@@ -24,6 +24,16 @@ Fraction::Fraction(int n, int d)
 	else denominator = d;
 }
 
+void Fraction::fr_print()
+{
+	std::cout << numerator << " / " << denominator << '\n';
+}
+
+void Fraction::reducefr()
+{
+	//to do
+}
+
 Fraction& Fraction::operator++ ()
 {
 	numerator += denominator;

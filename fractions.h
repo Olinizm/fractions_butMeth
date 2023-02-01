@@ -1,5 +1,5 @@
 #pragma once
-
+//is that what they call a self-documenting code?
 class Fraction
 {
 	int numerator = 0;
@@ -9,6 +9,9 @@ public:
 	Fraction();
 	Fraction(int n); //constructor called when only one argument is given makes it a numerator
 	Fraction(int n, int d); //constructor called for 2 values takes numerator and denominator in that order
+
+	void fr_print(); //prints out the Fraction data in "numerator / denominator" form
+	void reducefr(); //checks for the greatest common divisor, until the numbers can't be divided
 
 	Fraction& operator++ (); //increases the numerator value by denominator value returns the Fraction object
 	Fraction operator++ (int); //does the same as ++Fraction operator but returns the Fraction values

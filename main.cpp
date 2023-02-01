@@ -3,5 +3,7 @@
 
 int main()
 {
-	Fraction f(1, 1);
+	Fraction f(1, 1), a(1, 2);
+	f = a;
+	f.fr_print();
 }
