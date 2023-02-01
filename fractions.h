@@ -5,6 +5,7 @@ class Fraction
 	int numerator = 0;
 	int denominator = 1;
 
+public:
 	Fraction();
 	Fraction(int n); //constructor called when only one argument is given makes it a numerator
 	Fraction(int n, int d); //constructor called for 2 values takes numerator and denominator in that order

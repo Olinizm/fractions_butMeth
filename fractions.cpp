@@ -20,7 +20,7 @@ Fraction::Fraction(int n)
 Fraction::Fraction(int n, int d)
 {
 	numerator = n;
-	if (denominator == 0) fr_error("invalid denominator value");
+	if (d == 0) fr_error("invalid denominator value");
 	else denominator = d;
 }
 
@@ -66,11 +66,17 @@ Fraction Fraction::operator+(Fraction a)
 		f.numerator *= a.denominator;
 		f.denominator *= a.denominator;
 		a.numerator *= f.denominator;
-		a.denominator *= f.denominator;
 		f.numerator += a.numerator;
 	}
 	return f;
 }
+Fraction Fraction::operator+(int a)
+{
+	Fraction f(numerator, denominator);
+	f.numerator = denominator * a;
+	return f;
+}
+
 Fraction Fraction::operator-(Fraction a)
 {
 	Fraction f(numerator, denominator);
@@ -84,12 +90,11 @@ Fraction Fraction::operator-(Fraction a)
 		f.numerator *= a.denominator;
 		f.denominator *= a.denominator;
 		a.numerator *= f.denominator;
-		a.denominator *= f.denominator;
 		f.numerator -= a.numerator;
 	}
 	return f;
 }
 Fraction Fraction::operator*(Fraction a)
 {
-
+	return a;
 }

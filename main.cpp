@@ -1,7 +1,7 @@
 #include <iostream>
 #include "fractions.h"
 
-main()
+int main()
 {
-
+	Fraction f(1, 1);
 }
