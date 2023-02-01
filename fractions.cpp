@@ -69,4 +69,27 @@ Fraction Fraction::operator+(Fraction a)
 		a.denominator *= f.denominator;
 		f.numerator += a.numerator;
 	}
+	return f;
+}
+Fraction Fraction::operator-(Fraction a)
+{
+	Fraction f(numerator, denominator);
+	if (denominator == a.denominator)
+	{
+		f.numerator -= a.numerator;
+		return f;
+	}
+	else
+	{
+		f.numerator *= a.denominator;
+		f.denominator *= a.denominator;
+		a.numerator *= f.denominator;
+		a.denominator *= f.denominator;
+		f.numerator -= a.numerator;
+	}
+	return f;
+}
+Fraction Fraction::operator*(Fraction a)
+{
+
 }
