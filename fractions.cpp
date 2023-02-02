@@ -1,6 +1,22 @@
 #include <iostream>
 #include "fractions.h"
 
+//greatest common divisor
+int NWD(int a, int b)
+{
+	int smaller = (a > b) ? b : a;
+	for (int i = 2; i <= smaller; i++)
+	{
+		if (a % i == 0 && b % 1 == 0)
+		{
+			return NWD(a / i, b / i) * i;
+		}
+			
+	}
+	return 1;
+}
+
+
 int fr_error(std::string message)
 {
 	std::cerr << message;
@@ -32,7 +48,8 @@ void Fraction::fr_print()
 
 void Fraction::reducefr()
 {
-	//to do
+	numerator /= NWD(numerator, denominator);
+	denominator /= NWD(numerator, denominator);
 }
 
 //section .INCREMENTATION .DECREMENTATION
