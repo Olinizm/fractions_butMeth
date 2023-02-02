@@ -16,7 +16,7 @@ public:
 	Fraction& operator++ (); //increases the numerator value by denominator value returns the Fraction object
 	Fraction operator++ (int); //does the same as ++Fraction operator but returns the Fraction values
 
-	Fraction& operator-- (); //decreases the numerator value by denominator value returns the Fraction object
+	Fraction& operator-- (); //substracts denominator value from the numerator returns the Fraction object
 	Fraction operator-- (int); //does the same as --Fraction operator but returns the Fraction values
 
 	Fraction& operator= (Fraction right); //assigns one fraction values to another

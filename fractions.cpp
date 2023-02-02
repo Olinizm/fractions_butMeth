@@ -7,6 +7,7 @@ int fr_error(std::string message)
 	return 1;
 }
 
+//section .CONSTRUCTORS
 Fraction::Fraction()
 {
 	numerator = 0;
@@ -34,6 +35,7 @@ void Fraction::reducefr()
 	//to do
 }
 
+//section .INCREMENTATION .DECREMENTATION
 Fraction& Fraction::operator++ ()
 {
 	numerator += denominator;
@@ -63,6 +65,8 @@ Fraction& Fraction::operator=(Fraction a)
 	denominator = a.denominator;
 	return *this;
 }
+
+//section .ADDITION
 Fraction Fraction::operator+(Fraction a)
 {
 	Fraction f(numerator, denominator);
@@ -83,10 +87,11 @@ Fraction Fraction::operator+(Fraction a)
 Fraction Fraction::operator+(int a)
 {
 	Fraction f(numerator, denominator);
-	f.numerator = denominator * a;
+	f.numerator += denominator * a;
 	return f;
 }
 
+//section .SUBSTRACTION
 Fraction Fraction::operator-(Fraction a)
 {
 	Fraction f(numerator, denominator);
@@ -104,7 +109,39 @@ Fraction Fraction::operator-(Fraction a)
 	}
 	return f;
 }
+Fraction Fraction::operator-(int a)
+{
+	Fraction f(numerator, denominator);
+	f.numerator -= denominator * a;
+	return f;
+}
+
+//section .MULTIPLICATION
 Fraction Fraction::operator*(Fraction a)
 {
-	return a;
+	Fraction f(numerator, denominator);
+	f.numerator *= a.numerator;
+	f.denominator *= a.denominator;
+	return f;
+}
+Fraction Fraction::operator*(int a)
+{
+	Fraction f(numerator, denominator);
+	f.numerator *= a;
+	return f;
+}
+
+//section .DIVISION
+Fraction Fraction::operator/(Fraction a)
+{
+	Fraction f(numerator, denominator);
+	f.numerator *= a.denominator;
+	f.denominator *= a.numerator;
+	return f;
+}
+Fraction Fraction::operator/(int a)
+{
+	Fraction f(numerator, denominator);
+	f.denominator *= a;
+	return f;
 }
