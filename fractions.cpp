@@ -7,7 +7,7 @@ int NWD(int a, int b)
 	int smaller = (a > b) ? b : a;
 	for (int i = 2; i <= smaller; i++)
 	{
-		if (a % i == 0 && b % 1 == 0)
+		if (a % i == 0 && b % i == 0)
 		{
 			return NWD(a / i, b / i) * i;
 		}
@@ -40,16 +40,26 @@ Fraction::Fraction(int n, int d)
 	if (d == 0) fr_error("invalid denominator value");
 	else denominator = d;
 }
+Fraction::~Fraction()
+{
+
+}
 
 void Fraction::fr_print()
 {
-	std::cout << numerator << " / " << denominator << '\n';
+	std::cout << numerator << " / " << denominator;
+}
+
+void fr_print(Fraction f)
+{
+	std::cout << f.numerator << " / " << f.denominator;
 }
 
 void Fraction::reducefr()
 {
+	Fraction cp(numerator, denominator);
 	numerator /= NWD(numerator, denominator);
-	denominator /= NWD(numerator, denominator);
+	denominator /= NWD(cp.numerator, cp.denominator);
 }
 
 //section .INCREMENTATION .DECREMENTATION
@@ -96,9 +106,10 @@ Fraction Fraction::operator+(Fraction a)
 	{
 		f.numerator *= a.denominator;
 		f.denominator *= a.denominator;
-		a.numerator *= f.denominator;
+		a.numerator *= denominator;
 		f.numerator += a.numerator;
 	}
+	f.reducefr();
 	return f;
 }
 Fraction Fraction::operator+(int a)
@@ -121,9 +132,10 @@ Fraction Fraction::operator-(Fraction a)
 	{
 		f.numerator *= a.denominator;
 		f.denominator *= a.denominator;
-		a.numerator *= f.denominator;
+		a.numerator *= denominator;
 		f.numerator -= a.numerator;
 	}
+	f.reducefr();
 	return f;
 }
 Fraction Fraction::operator-(int a)
@@ -139,12 +151,14 @@ Fraction Fraction::operator*(Fraction a)
 	Fraction f(numerator, denominator);
 	f.numerator *= a.numerator;
 	f.denominator *= a.denominator;
+	f.reducefr();
 	return f;
 }
 Fraction Fraction::operator*(int a)
 {
 	Fraction f(numerator, denominator);
 	f.numerator *= a;
+	f.reducefr();
 	return f;
 }
 
@@ -154,11 +168,13 @@ Fraction Fraction::operator/(Fraction a)
 	Fraction f(numerator, denominator);
 	f.numerator *= a.denominator;
 	f.denominator *= a.numerator;
+	f.reducefr();
 	return f;
 }
 Fraction Fraction::operator/(int a)
 {
 	Fraction f(numerator, denominator);
 	f.denominator *= a;
+	f.reducefr();
 	return f;
 }

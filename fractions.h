@@ -9,8 +9,10 @@ public:
 	Fraction();
 	Fraction(int n); //constructor called when only one argument is given makes it a numerator
 	Fraction(int n, int d); //constructor called for 2 values takes numerator and denominator in that order
+	~Fraction();
 
 	void fr_print(); //prints out the Fraction data in "numerator / denominator" form
+	friend void fr_print(Fraction); //because it looks nicer in code
 	void reducefr(); //checks for the greatest common divisor, until the numbers can't be divided
 
 	Fraction& operator++ (); //increases the numerator value by denominator value returns the Fraction object
